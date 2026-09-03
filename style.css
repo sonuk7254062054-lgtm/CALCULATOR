@@ -1,0 +1,186 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.calculator-wrapper {
+    perspective: 1200px;
+    transform-style: preserve-3d;
+}
+
+.calculator {
+    width: 320px;
+    background: linear-gradient(135deg, #2d3436 0%, #1e272e 50%, #0f3460 100%);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.5),
+        0 0 40px rgba(102, 126, 234, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.8);
+    transition: transform 0.3s ease;
+}
+
+.display-panel {
+    background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 
+        inset 0 2px 10px rgba(0, 0, 0, 0.7),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(102, 126, 234, 0.2);
+}
+
+.display-screen {
+    background: linear-gradient(180deg, #0f3460 0%, #0a1f32 100%);
+    border-radius: 10px;
+    padding: 15px 20px;
+    text-align: right;
+    min-height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    border: 1px solid rgba(102, 126, 234, 0.3);
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.previous-operand {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 16px;
+    height: 20px;
+    min-height: 20px;
+    font-weight: 300;
+}
+
+.current-operand {
+    color: #4a9eff;
+    font-size: 32px;
+    font-weight: bold;
+    text-shadow: 
+        0 0 10px rgba(74, 158, 255, 0.5),
+        0 2px 4px rgba(0, 0, 0, 0.8);
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.buttons-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.btn {
+    padding: 20px;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn:active {
+    transform: translateY(2px);
+}
+
+.number-btn {
+    background: linear-gradient(145deg, #3c4147 0%, #2d3436 100%);
+    color: #ecf0f1;
+    box-shadow: 
+        0 10px 25px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.number-btn:hover {
+    background: linear-gradient(145deg, #505660 0%, #3c4147 100%);
+    box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.function-btn {
+    background: linear-gradient(145deg, #667eea 0%, #5568d3 100%);
+    color: #ffffff;
+    box-shadow: 
+        0 10px 25px rgba(102, 126, 234, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.function-btn:hover {
+    background: linear-gradient(145deg, #7a8efd 0%, #667eea 100%);
+    box-shadow: 
+        0 15px 35px rgba(102, 126, 234, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.equals-btn {
+    background: linear-gradient(145deg, #00d4ff 0%, #0099cc 100%);
+    color: #ffffff;
+    box-shadow: 
+        0 10px 25px rgba(0, 212, 255, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-weight: 700;
+    grid-column: span 1;
+}
+
+.equals-btn:hover {
+    background: linear-gradient(145deg, #1ae9ff 0%, #00d4ff 100%);
+    box-shadow: 
+        0 15px 35px rgba(0, 212, 255, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.zero {
+    grid-column: span 1;
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+    .calculator {
+        width: 100%;
+        max-width: 300px;
+        padding: 15px;
+    }
+    
+    .buttons-grid {
+        gap: 8px;
+    }
+    
+    .btn {
+        padding: 15px;
+        font-size: 14px;
+        border-radius: 10px;
+    }
+    
+    .current-operand {
+        font-size: 24px;
+    }
+}
